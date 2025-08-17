@@ -1,0 +1,17 @@
+.user-information {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__wrapper-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    @extend .label-large;
+  }
+
+  &__label {
+    text-transform: capitalize;
+  }
+}

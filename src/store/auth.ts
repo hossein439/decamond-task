@@ -19,6 +19,7 @@ interface User {
 
 interface AuthStore {
   user: User | null;
+  isHydrated: boolean;
   getInstance: () => AuthService;
   login: () => Promise<any>;
   setUserInformation: (data: object) => any;
@@ -27,6 +28,7 @@ interface AuthStore {
 const useAuthStore = create<AuthStore>()(
   persist(
     (set, get) => ({
+      isHydrated: false,
       user: null,
       getInstance: () => AuthService.getInstance(),
       setUserInformation: (data) => set(() => ({ user: { ...data } as User })),
@@ -34,6 +36,15 @@ const useAuthStore = create<AuthStore>()(
     }),
     {
       name: 'auth-store',
+      onRehydrateStorage: (state) => {
+        return (state, error) => {
+          if (error) {
+            console.log('an error happened during hydration', error);
+          } else {
+            state.isHydrated = true;
+          }
+        };
+      },
     },
   ),
 );
