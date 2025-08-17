@@ -1,9 +1,8 @@
 'use clint';
 import * as React from 'react';
-import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/utils/utils';
-import IconLoader from '@/components/ui/icon-loader';
+import IconLoader from '@/components/base/icon-loader';
 import buttonClass from './button.module.scss';
 
 const baseClassName = 'base-button';
@@ -85,10 +84,8 @@ function Button({
     ['data-class-prepend-icon']?: string;
     ['data-class-append-icon']?: string;
   }) {
-  const Comp = asChild ? Slot : 'button';
-
   return (
-    <Comp
+    <button
       data-slot="button"
       disabled={isDisabled || isLoading}
       className={cn(
@@ -110,7 +107,7 @@ function Button({
           {appendIcon && <IconLoader name={appendIcon} size={iconSize} />}
         </>
       )}
-    </Comp>
+    </button>
   );
 }
 

@@ -1,5 +1,5 @@
 'use client';
-import IconLoader from '@/components/ui/icon-loader';
+import IconLoader from '@/components/base/icon-loader';
 import { cn } from '@/utils/utils';
 import { cva } from 'class-variance-authority';
 import * as React from 'react';
