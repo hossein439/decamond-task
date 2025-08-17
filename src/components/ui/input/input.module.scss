@@ -1,0 +1,96 @@
+$root: 'base-input';
+
+.#{$root} {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 25px;
+  border: 1px solid var(--outline-variant);
+  border-radius: 16px;
+  background-color: var(--surface-container);
+  padding: 16px;
+  transition: all ease-in-out 0.4s;
+  min-height: 56px;
+
+  &:focus-within {
+    border-color: var(--primary);
+  }
+
+  &--disabled {
+    background-color: var(--surface-container-high);
+  }
+
+  &--error {
+    border-color: var(--error);
+    &:focus-within {
+      border-color: var(--error);
+    }
+  }
+
+  &__input {
+    position: absolute;
+    left: 52px;
+    right: 52px;
+    padding-block: 16px;
+    background-color: var(--surface-container);
+    color: var(--on-surface);
+    @extend .body-medium;
+
+    &--disabled {
+      color: var(--on-surface);
+      opacity: 0.5;
+
+      &::placeholder {
+        color: var(--on-surface-16);
+      }
+    }
+
+    &--has-icon {
+      left: 16px;
+      right: 16px;
+    }
+
+    &:focus-within::placeholder {
+      color: var(--primary);
+    }
+
+    &::placeholder {
+      text-transform: capitalize;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    bottom: 56px;
+    text-transform: capitalize;
+    @extend .title-medium;
+  }
+
+  &__icon {
+    color: var(--on-surface-variant);
+
+    &--disabled {
+      color: var(--on-surface-16);
+    }
+
+    &--is-clickable {
+      cursor: pointer;
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    left: 0;
+    top: 56px;
+    @extend .label-medium;
+    &--is-error {
+      color: var(--error);
+    }
+  }
+}
